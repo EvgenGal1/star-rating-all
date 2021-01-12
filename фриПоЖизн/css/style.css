@@ -1,0 +1,114 @@
+/* -----Обнуление----- */
+*,
+*:before,
+*:after {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	box-sizing: border-box;
+}
+a,
+a:visited {
+	text-decoration: none;
+}
+ul,
+ol,
+li {
+	list-style: none;
+}
+img {
+	vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+html,
+body {
+	height: 100%;
+	line-height: 1;
+	font-size: 16px;
+	background-color: #333;
+	color: #fff;
+	font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+	font-size: 30px;
+	margin: 0px 0px 30px 0px;
+}
+.wrapper {
+	min-height: 100%;
+	padding: 50px;
+}
+/* ------------------- */
+/* ------------------- */
+/* ------------------- */
+.form {
+}
+.form_margin {
+	margin: 0px 0px 30px 0px;
+}
+.from__item {
+	margin: 0px 0px 30px 0px;
+}
+.from__label {
+	margin: 0px 0px 10px 0px;
+}
+.from__btn {
+	height: 50px;
+	background-color: #77608d;
+	padding: 0px 30px;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+}
+/* ------------------- */
+/* --Простой рейтинг-- */
+/* ------------------- */
+.simple-rating {
+	position: relative;
+	font-size: 40px;
+	display: inline-block;
+}
+.simple-rating::before {
+	content: '★★★★★';
+	display: block;
+}
+.simple-rating__items {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	/* в обратном порядке из-за обратного html */
+	display: flex;
+	flex-direction: row-reverse;
+	overflow: hidden;
+}
+.simple-rating__item {
+	position: absolute;
+	width: 0%;
+	height: 0%;
+	opacity: 0;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+}
+.simple-rating__label {
+	height: 100%;
+	cursor: pointer;
+	/* 20% так как 5 звёзд, каждая по 20% */
+	flex: 0 0 20%;
+	color: #ff0;
+}
+/* для звёзд который будут меняться */
+.simple-rating__label::before {
+	content: '★';
+	display: block;
+	transition: color all 0.3s ease 0s;
+}
