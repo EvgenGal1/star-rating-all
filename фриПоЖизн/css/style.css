@@ -49,6 +49,7 @@ h1 {
 /* ------------------- */
 /* ------------------- */
 .form {
+	font-family: inherit;
 }
 .form_margin {
 	margin: 0px 0px 30px 0px;
@@ -59,7 +60,7 @@ h1 {
 .from__label {
 	margin: 0px 0px 10px 0px;
 }
-.from__btn {
+.form__btn {
 	height: 50px;
 	background-color: #77608d;
 	padding: 0px 30px;
@@ -85,7 +86,7 @@ h1 {
 	height: 100%;
 	top: 0;
 	left: 0;
-	/* в обратном порядке из-за обратного html */
+	/* в обратном порядке из-за обратного html и показа предидущих звезд */
 	display: flex;
 	flex-direction: row-reverse;
 	overflow: hidden;
@@ -104,11 +105,37 @@ h1 {
 	cursor: pointer;
 	/* 20% так как 5 звёзд, каждая по 20% */
 	flex: 0 0 20%;
-	color: #ff0;
+	/* теперь __label накрыли собой размерозадающие звёзды */
+	color: #ffffff;
 }
 /* для звёзд который будут меняться */
 .simple-rating__label::before {
 	content: '★';
 	display: block;
 	transition: color all 0.3s ease 0s;
+}
+/* выделяем активные звёзды, т.е. выводим оценку(при нажатие на звезду - зафиксировалась). Для этого использ псевдокласс checked но для радио кнопок */
+.simple-rating__item:checked,
+.simple-rating__item:checked ~ .simple-rating__label {
+	color: #ffd500;
+}
+/* ~ применит стиль ко всем следующим объектам. для этого применялся flex-direction: row-reverse, чтоб показать предидущие звезды, изза обратной вложенности в html */
+/*  */
+.simple-rating__label:hover,
+.simple-rating__label:hover ~ .simple-rating__label,
+.simple-rating__label:checked ~ .simple-rating__label:hover {
+	color: #ffff88;
+}
+/* ------------------- */
+/* ---Рейтинг с  JS--- */
+/* ------------------- */
+.rating {
+}
+.rating__body {
+}
+.rating__active {
+}
+.rating__item {
+}
+.rating__value {
 }

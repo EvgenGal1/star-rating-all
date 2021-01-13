@@ -137,7 +137,7 @@
               <div class="from__label">Простой рейтинг (без JS)</div>
               <div class="simple-rating">
                 <div class="simple-rating__items">
-                  <!-- указано в обратном порядке для flex-direction: row-reverse -->
+                  <!-- указано в обратном порядке для flex-direction: row-reverse, чтоб показать предидущие звезды -->
                   <input
                     id="simple-rating__5"
                     type="radio"
@@ -166,6 +166,7 @@
                     class="simple-rating__item"
                     name="simple-rating"
                     value="3"
+                    checked
                   />
                   <label
                     for="simple-rating__3"
@@ -198,11 +199,52 @@
             </div>
             <div class="from__item">
               <div class="from__label">Точный рейтинг (JS)</div>
+              <div class="rating">
+                <div class="rating__body">
+                  <!-- полоса процентного соотношения оценки -->
+                  <div class="rating__active"></div>
+                  <div class="rating__item">
+                    <input
+                      type="radio"
+                      class="rating__item"
+                      name="rating"
+                      value="1"
+                    />
+                    <input
+                      type="radio"
+                      class="rating__item"
+                      name="rating"
+                      value="2"
+                    />
+                    <input
+                      type="radio"
+                      class="rating__item"
+                      name="rating"
+                      value="3"
+                    />
+                    <input
+                      type="radio"
+                      class="rating__item"
+                      name="rating"
+                      value="4"
+                    />
+                    <input
+                      type="radio"
+                      class="rating__item"
+                      name="rating"
+                      value="5"
+                    />
+                  </div>
+                </div>
+                <!-- вывод оценки в цифрах -->
+                <div class="rating__value">4.3</div>
+              </div>
             </div>
-            <div class="from__item">
-              <div class="from__label">Точный рейтинг (JS + AJAX)</div>
-            </div>
+            <button type="submit" class="form__btn btn">Отправить</button>
           </form>
+          <div class="from">
+            <div class="from__label">Точный рейтинг (JS + AJAX)</div>
+          </div>
         </div>
       </div>
       <div id="eshchyoCHyotTam"></div>
