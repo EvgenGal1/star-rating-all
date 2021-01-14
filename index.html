@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <link rel="stylesheet" href="ITSHef/css/star_rating.css" />
     <link rel="stylesheet" href="фриПоЖизн/css/style.css" />
+    <title>Document</title>
   </head>
   <body>
     <div class="container">
@@ -133,8 +133,8 @@
         <div class="wrapper">
           <h1>Звёздный рейтинг</h1>
           <form action="#" class="form form_margin">
-            <div class="from__item">
-              <div class="from__label">Простой рейтинг (без JS)</div>
+            <div class="form__item">
+              <div class="form__label">Простой рейтинг (без JS)</div>
               <div class="simple-rating">
                 <div class="simple-rating__items">
                   <!-- указано в обратном порядке для flex-direction: row-reverse, чтоб показать предидущие звезды -->
@@ -184,7 +184,7 @@
                     class="simple-rating__label"
                   ></label>
                   <input
-                    id="simple-rating_1"
+                    id="simple-rating__1"
                     type="radio"
                     class="simple-rating__item"
                     name="simple-rating"
@@ -197,9 +197,9 @@
                 </div>
               </div>
             </div>
-            <div class="from__item">
-              <div class="from__label">Точный рейтинг (JS)</div>
-              <div class="rating">
+            <div class="form__item">
+              <div class="form__label">Точный рейтинг (JS)</div>
+              <div class="rating rating_set">
                 <div class="rating__body">
                   <!-- полоса процентного соотношения оценки -->
                   <div class="rating__active"></div>
@@ -242,15 +242,15 @@
             </div>
             <button type="submit" class="form__btn btn">Отправить</button>
           </form>
-          <div class="from">
-            <div class="from__label">Точный рейтинг (JS + AJAX)</div>
+          <div class="form">
+            <div class="form__label">Точный рейтинг (JS + AJAX)</div>
           </div>
         </div>
       </div>
       <div id="eshchyoCHyotTam"></div>
     </div>
-    <script src="ITSHef/js/star_rating.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="/фриПоЖизн/js/script.js"></script>
+    <!-- <script src="ITSHef/js/star_rating.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+    <script src="фриПоЖизн/js/script.js"></script>
   </body>
 </html>
