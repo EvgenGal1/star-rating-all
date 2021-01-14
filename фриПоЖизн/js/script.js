@@ -73,15 +73,62 @@ function initRatings() {
         // Обновление переменных
         initRatingVars(rating);
 
+        // раб при наличии опред атрибута datы, сейчас ajax
         if (rating.dataset.ajax) {
           // "Отправить" на сервер. при выборе оценки, с помощью ajax данные будут отправ на условный сервер и возвр некое значение
           setRatingValue(ratingItem.value, rating);
         } else {
-          // Отобразить указанную оцнку. выбор оценки (сразу отображается) и отправка формы.
+          // Отобразить указанную оценку. выбор оценки (сразу отображается) и отправка формы.
           ratingValue.innerHTML = index + 1;
           setRatingActiveWidth();
         }
       });
+    }
+  }
+
+  // асинхр функц (потому что fetch(запрос на получение данных)). приним value(`значение` нажатого объекта) которое отправим на сервер, rating (всю оболочку)
+  async function setRatingValue(value, rating) {
+    // перед запуском проверка на отсутст доп класса, от повторных нажатий
+    if (!rating.classList.contains("rating_sending")) {
+      // в момент отправки добав класс rating_sending для подскази что идёт обработка запроса
+      rating.classList.add("rating_sending");
+
+      // Отправика данных (value) на сервер. файл rating.json - замена сервера (ответ 3.7)
+      let response = await fetch("rating.json", {
+        // т.к. json то метод GET
+        method: "GET",
+
+        // // реальная отправка на сервер
+        //body: JSON.stringify({
+        // // в перемен userRating будет отправ value
+        //	userRating: value
+        //}),
+        //headers: {
+        //	'content-type': 'application/json'
+        //}
+      });
+
+      // если ответ от сервера есть
+      if (response.ok) {
+        // получ json ответ от сервера в переменную
+        const result = await response.json();
+
+        // Получаем новый рейтинг. из rating.json
+        const newRating = result.newRating;
+
+        // Вывод нового среднего результата. в цифры
+        ratingValue.innerHTML = newRating;
+
+        // Обновление активных звезд
+        setRatingActiveWidth();
+
+        // убирает доп класс для повторного голосования
+        rating.classList.remove("rating_sending");
+      } else {
+        // если нет ответа от сервера - ошибка, убрать доп класс
+        alert("Ошибка");
+        rating.classList.remove("rating_sending");
+      }
     }
   }
 }

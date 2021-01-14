@@ -137,6 +137,8 @@ h1 {
 	line-height: 0.75;
 	/* выровнять цифры со звёздами */
 	align-items: flex-end;
+	/* после AJAX */
+	transition: opacity 0.3s ease 0s;
 }
 .rating__body {
 	position: relative;
@@ -184,4 +186,15 @@ h1 {
 	padding: 0px 0px 0px 10px;
 	/* цифры в 2 раза меньше */
 	font-size: 50%;
+}
+/* ------------------- */
+/* Рейтинг с JS + AJAX */
+/* ------------------- */
+/* когда отправ рейтинг */
+.rating.rating_sending {
+	opacity: 0.2;
+}
+/* при возможности указывать рейтинг, для active и item измен курсор */
+.rating_set .rating__active,
+.rating_set .rating__item {
 }
