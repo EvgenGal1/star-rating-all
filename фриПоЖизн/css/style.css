@@ -1,23 +1,22 @@
 /* -----Обнуление----- */
 *,
-*:before,
-*:after {
-	padding: 0px;
-	margin: 0px;
-	border: 0px;
-	box-sizing: border-box;
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
 }
-a,
-a:visited {
-	text-decoration: none;
+a {
+  text-decoration: none;
 }
 ul,
 ol,
 li {
-	list-style: none;
+  list-style: none;
 }
 img {
-	vertical-align: top;
+  vertical-align: top;
 }
 h1,
 h2,
@@ -25,176 +24,178 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: inherit;
-	font-size: inherit;
+  font-weight: inherit;
+  font-size: inherit;
 }
 html,
 body {
-	height: 100%;
-	line-height: 1;
-	font-size: 16px;
-	background-color: #333;
-	color: #fff;
-	font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  line-height: 1;
+  font-size: 16px;
+  background-color: #333;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
 }
 h1 {
-	font-size: 30px;
-	margin: 0px 0px 30px 0px;
+  font-size: 30px;
+  margin: 0px 0px 30px 0px;
 }
 .wrapper {
-	min-height: 100%;
-	padding: 50px;
+  min-height: 100%;
+  padding: 50px;
 }
 /* ------------------- */
 /* ------------------- */
 /* ------------------- */
-.form {
-	font-family: inherit;
-}
+/* .form {
+} */
 .form_margin {
-	margin: 0px 0px 30px 0px;
+  margin: 0px 0px 30px 0px;
 }
 .form__item {
-	margin: 0px 0px 30px 0px;
+  margin: 0px 0px 30px 0px;
 }
 .form__label {
-	margin: 0px 0px 10px 0px;
+  margin: 0px 0px 10px 0px;
 }
 .form__btn {
-	height: 50px;
-	background-color: #77608d;
-	padding: 0px 30px;
-	color: #fff;
-	font-size: 16px;
-	cursor: pointer;
+  height: 50px;
+  background-color: #77608d;
+  padding: 0px 30px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
 }
 /* ------------------- */
 /* --Простой рейтинг-- */
 /* ------------------- */
 .simple-rating {
-	position: relative;
-	font-size: 40px;
-	display: inline-block;
+  position: relative;
+  font-size: 40px;
+  display: inline-block;
 }
 .simple-rating::before {
-	content: '★★★★★';
-	display: block;
+  content: '★★★★★';
+  display: block;
 }
 .simple-rating__items {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	/* `переполнение: скрыто` */
-	overflow: hidden;
-	/* в обратном порядке из-за обратного html и для показа предидущих звезд */
-	display: flex;
-	flex-direction: row-reverse;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /* в обратном порядке из-за обратного html и для показа предидущих звезд */
+  display: flex;
+  flex-direction: row-reverse;
+  /* `переполнение: скрыто` */
+  overflow: hidden;
 }
 .simple-rating__item {
-	position: absolute;
-	width: 0%;
-	height: 0%;
-	opacity: 0;
-	/* видимость: скрыта; */
-	visibility: hidden;
-	top: 0;
-	left: 0;
+  position: absolute;
+  width: 0%;
+  height: 0%;
+  opacity: 0;
+  /* видимость: скрыта; */
+  visibility: hidden;
+  top: 0;
+  left: 0;
 }
 .simple-rating__label {
-	height: 100%;
-	cursor: pointer;
-	/* 20% так как 5 звёзд, каждая по 20% */
-	flex: 0 0 20%;
-	/* теперь __label накрыли собой размерозадающие звёзды */
-	color: #ffffff;
+  height: 100%;
+  cursor: pointer;
+  /* 20% так как 5 звёзд, каждая по 20% */
+  flex: 0 0 20%;
+  /* теперь __label накрыли собой размерозадающие звёзды */
+  color: #ffffff;
 }
 /* для звёзд который будут меняться */
 .simple-rating__label::before {
-	content: '★';
-	display: block;
-	transition: color all 0.3s ease 0s;
+  content: '★';
+  display: block;
+  transition: color 0.3s ease 0s;
 }
 /* выделяем активные звёзды, т.е. выводим оценку(при нажатие на звезду - зафиксировалась). Для этого использ псевдокласс checked но для радио кнопок */
 .simple-rating__item:checked,
 .simple-rating__item:checked ~ .simple-rating__label {
-	color: #ffd500;
+  color: #ffd500;
 }
 /* ~ применит стиль ко всем следующим объектам. для этого применялся flex-direction: row-reverse, чтоб показать предидущие звезды, изза обратной вложенности в html */
 /*  */
 .simple-rating__label:hover,
 .simple-rating__label:hover ~ .simple-rating__label,
 .simple-rating__label:checked ~ .simple-rating__label:hover {
-	color: #ffff88;
+  color: #ffff88;
 }
 /* ------------------- */
 /* ---Рейтинг с  JS--- */
 /* ------------------- */
 .rating {
-	display: flex;
-	font-size: 40px;
-	line-height: 0.75;
-	/* выровнять цифры со звёздами */
-	align-items: flex-end;
-	/* после AJAX */
-	transition: opacity 0.3s ease 0s;
+  display: flex;
+  font-size: 40px;
+  line-height: 0.75;
+  /* выровнять цифры со звёздами */
+  align-items: flex-end;
+  /* после AJAX */
+  transition: opacity 0.3s ease 0s;
 }
+
 .rating__body {
-	position: relative;
+  position: relative;
 }
 .rating__body::before {
-	content: '★★★★★';
-	display: block;
+  content: '★★★★★';
+  display: block;
 }
 /* стиль заполняющей линии */
 .rating__active {
-	position: absolute;
-	height: 100%;
-	top: 0;
-	left: 0;
-	/* управляет заполнением линии. управл ч/з JS */
-	width: 100%;
-	/* `переполнение: скрыто` */
-	overflow: hidden;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /* управляет заполнением линии. управл ч/з JS */
+  width: 0%;
+  /* `переполнение: скрыто` */
+  overflow: hidden;
 }
 .rating__active::before {
-	content: '★★★★★';
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	color: #ffd500;
+  content: '★★★★★';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: #ffd500;
 }
+
 .rating__items {
-	display: flex;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 .rating__item {
-	flex: 0 0 20%;
-	height: 100%;
-	/* не видимость. нажимая якобы на звезды - нажимаем на точки */
-	opacity: 0;
+  flex: 0 0 20%;
+  height: 100%;
+  /* не видимость. нажимая якобы на звезды - нажимаем на точки */
+  opacity: 0;
 }
 .rating__value {
-	line-height: 1;
-	padding: 0px 0px 0px 10px;
-	/* цифры в 2 раза меньше */
-	font-size: 50%;
+  line-height: 1;
+  padding: 0px 0px 0px 10px;
+  /* цифры в 2 раза меньше */
+  font-size: 50%;
 }
 /* ------------------- */
 /* Рейтинг с JS + AJAX */
 /* ------------------- */
 /* когда отправ рейтинг */
 .rating.rating_sending {
-	opacity: 0.2;
+  opacity: 0.2;
 }
 /* при возможности указывать рейтинг, для active и item измен курсор */
 .rating_set .rating__active,
 .rating_set .rating__item {
+  cursor: pointer;
 }
